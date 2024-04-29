@@ -6,10 +6,9 @@ import { usePathname } from 'next/navigation';
 
 const navbarItems = [
   { ref: '/', label: 'Home' },
-  { ref: '/about', label: 'About' },
-  { ref: '/projects', label: 'Projects' },
-  { ref: '/team', label: 'Team' },
-  { ref: '/news', label: 'News' },
+  { ref: '#about', label: 'About' },
+  { ref: '/news', label: 'Rooms' },
+  { ref: '/availability', label: 'Availability' },
   { ref: '/contact', label: 'Contact' },
 ];
 

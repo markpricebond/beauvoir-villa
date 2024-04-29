@@ -79,7 +79,7 @@ export default function Home() {
               aim to create a world where everyone has the opportunity to learn
               and grow.
             </p>
-            <a href="/about" className="text-purple-site py-6 font-site">
+            <a href="#about" className="text-purple-site py-6 font-site">
               Read More
             </a>
           </div>

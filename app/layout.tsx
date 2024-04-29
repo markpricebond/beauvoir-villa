@@ -13,6 +13,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // THIS IS HOW WE GET CERTAIN ITEMS FROM GETWIXCLIENT
+  // const dataCollectionId = 'rooms';
+  // const dataItemsList = await wixClient.items
+  //   .queryDataItems({
+  //     dataCollectionId,
+  //   })
+  //   .find();
+  // return dataItemsList;
+
   return (
     <html lang="en">
       <head>
@@ -28,6 +37,7 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_WIX_CLIENT_ID ? (
           <>
             <Header />
+            <div></div>
             <main className="bg-white min-h-[600px]">{children}</main>
             <div className="mt-10 sm:mt-20">
               <Footer />

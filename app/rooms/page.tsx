@@ -2,11 +2,19 @@ import { getWixClient } from '@app/hooks/useWixClientServer';
 import { formatDate } from '@app/utils/date-formatter';
 import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 import testIds from '@app/utils/test-ids';
-export default async function News() {
+export default async function Rooms() {
+  // THIS IS HOW WE GET CERTAIN ITEMS FROM GETWIXCLIENT
+  // const dataCollectionId = 'rooms';
+  // const dataItemsList = await wixClient.items
+  //   .queryDataItems({
+  //     dataCollectionId,
+  //   })
+  //   .find();
+  // return dataItemsList;
   const wixClient = await getWixClient();
   const { items } = await wixClient.items
     .queryDataItems({
-      dataCollectionId: 'News',
+      dataCollectionId: 'rooms',
     })
     .find();
 
@@ -26,7 +34,7 @@ export default async function News() {
           className="text-center py-8 text-blue-site font-site"
           data-testid={testIds.NEWS_PAGE.HEADER}
         >
-          News & Updates
+          Rooms
         </h1>
         <p className="pt-6 max-w-3xl text-sm text-center mx-auto">
           Read the latest news and stay up to date about our organization, our
@@ -49,11 +57,6 @@ export default async function News() {
                   objectFit="cover"
                   disableZoom={true}
                 />
-                <span className="bg-blue-site text-white px-6 py-2 absolute bottom-[-20px]">
-                  {formatDate(
-                    new Date(item.data!.date?.$date ?? item.data!.date)
-                  )}
-                </span>
               </div>
               <div className="bg-white relative mt-10 px-8 pb-10">
                 <h2 className="mb-10 font-site">{item.data!.title}</h2>
