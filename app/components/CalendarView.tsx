@@ -5,30 +5,44 @@ import { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CalendarView({ items }) {
+type BookingsCollection = Array<{
+  dataCollectionId?: string;
+  data?: Record<string, any> | null;
+  _id?: string;
+}>;
+
+export default function CalendarView({ items }: { items: BookingsCollection }) {
   const itemsData = items.map((item) => item.data);
 
   const [date, setDate] = useState(new Date());
 
-  const handleCalendarChange = (value) => {
+  const handleCalendarChange = (value: Date) => {
     setDate(value);
   };
 
-  const tileContent = ({ date: currentDate, view }) => {
+  const tileContent = ({
+    date: currentDate,
+    view,
+  }: {
+    date: Date;
+    view: string;
+  }) => {
     if (view === 'month') {
       // Check if any booking falls on the current date
       const isBooked = itemsData.some((item) => {
-        const startDate = new Date(item.startDate);
-        const endDate = new Date(item.endDate);
-        // Convert current date to start of day to compare
-        const currentDay = new Date(
-          currentDate.getFullYear(),
-          currentDate.getMonth(),
-          currentDate.getDate()
-        );
-        // Check if current day is within booking range
-        const withinRange = startDate <= currentDay && currentDay <= endDate;
-        return withinRange;
+        if (item) {
+          const startDate = new Date(item.startDate);
+          const endDate = new Date(item.endDate);
+          // Convert current date to start of day to compare
+          const currentDay = new Date(
+            currentDate.getFullYear(),
+            currentDate.getMonth(),
+            currentDate.getDate()
+          );
+          // Check if current day is within booking range
+          const withinRange = startDate <= currentDay && currentDay <= endDate;
+          return withinRange;
+        }
       });
 
       // If booked, return custom content to mark the day
@@ -60,7 +74,7 @@ export default function CalendarView({ items }) {
   return (
     <>
       <Calendar
-        onChange={handleCalendarChange}
+        onChange={(e) => handleCalendarChange(e as Date)}
         value={date}
         calendarType="gregory"
         showNeighboringMonth={false}

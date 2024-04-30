@@ -1,6 +1,4 @@
 import { getWixClient } from '@app/hooks/useWixClientServer';
-import { WixMediaImage } from '@app/components/Image/WixMediaImage';
-import testIds from '@app/utils/test-ids';
 import CalendarView from '@app/components/CalendarView';
 
 export default async function Availability() {
