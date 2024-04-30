@@ -33,6 +33,7 @@
     url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff/s/oswald/v16/dI-qzxlKVQA6TUC5RKSb3z8E0i7KZn-EPnyo3HZu7kw.woff')
       format('woff');
 }
+
 @font-face {
   font-display: block;
   font-family: 'Oswald';
@@ -42,6 +43,10 @@
     format('woff2');
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
     U+FE2E-FE2F;
+}
+
+h1 {
+  font-family: var(--font-aboreto);
 }
 
 @layer components {
@@ -114,27 +119,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {
-  background: #ffffa9;
-}
-.react-calendar__tile--hasActive {
-  background: #76baff;
-}
-.react-calendar__tile--hasActive:enabled:hover,
-.react-calendar__tile--hasActive:enabled:focus {
-  background: #a9d4ff;
-}
-.react-calendar__tile--active {
-  background: #7fb92e;
-  color: white;
-}
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-  background: #29cc62;
-}
-.react-calendar--selectRange .react-calendar__tile--hover {
-  background-color: #e6e6e6;
 }

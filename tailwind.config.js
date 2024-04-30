@@ -13,7 +13,7 @@ module.exports = {
       },
       colors: {
         'purple-site': '#8751BD',
-        'blue-site': '#2859B6',
+        'blue-site': '#95c7f4',
       },
       keyframes: {
         fade: {

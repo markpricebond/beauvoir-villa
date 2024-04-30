@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import testIds from '@app/utils/test-ids';
 
-test.describe('News Page', () => {
-  const PATH = '/news';
+test.describe('Rooms Page', () => {
+  const PATH = '/rooms';
 
   test('look and feel - news', async ({ page }) => {
     await page.goto(PATH);

@@ -1,17 +1,12 @@
 'use client';
 
+import { CMSCollection } from '@app/hooks/useWixClientServer';
 import Link from 'next/link';
 import { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-type BookingsCollection = Array<{
-  dataCollectionId?: string;
-  data?: Record<string, any> | null;
-  _id?: string;
-}>;
-
-export default function CalendarView({ items }: { items: BookingsCollection }) {
+export default function CalendarView({ items }: { items: CMSCollection }) {
   const itemsData = items.map((item) => item.data);
 
   const [date, setDate] = useState(new Date());

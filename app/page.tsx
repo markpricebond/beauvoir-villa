@@ -1,10 +1,24 @@
 import { CarouselClient } from '@app/components/Carousel/Carousel';
 import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 import testIds from '@app/utils/test-ids';
+import { getWixClient } from './hooks/useWixClientServer';
 
-export default function Home() {
+export default async function Home() {
+  const wixClient = await getWixClient();
+  const reviewsItemsData = await wixClient.items
+    .queryDataItems({
+      dataCollectionId: 'VillaReviews',
+    })
+    .find();
+
+  const roomsItemsData = await wixClient.items
+    .queryDataItems({
+      dataCollectionId: 'rooms',
+    })
+    .find();
+
   return (
-    <div className="mx-auto relative sm:px-20 py-5">
+    <div className="relative">
       <div className="text-center w-full relative">
         <div className="absolute top-0 left-0 h-[200px] sm:h-[calc(100%-55px)] w-full bg-black opacity-50"></div>
         <video autoPlay muted loop className="w-full h-[200px] sm:h-fit">
@@ -101,7 +115,7 @@ export default function Home() {
               Get caught up on recent news and our latest achievements in the
               world of education.
             </p>
-            <a href="/news" className="text-purple-site py-6 font-site">
+            <a href="/rooms" className="text-purple-site py-6 font-site">
               Read More
             </a>
           </div>
@@ -164,7 +178,7 @@ export default function Home() {
           </span>
         </div>
       </div>
-      <CarouselClient />
+      <CarouselClient items={reviewsItemsData.items} />
     </div>
   );
 }

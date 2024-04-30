@@ -63,7 +63,7 @@ export default async function Rooms() {
                 <p className="text-sm mb-6">{item.data!.short_description}</p>
                 <a
                   data-testid={testIds.NEWS_PAGE.NEWS_ITEM_CTA}
-                  href={`/news/${item.data!.slug}`}
+                  href={`/rooms/${item.data!.slug}`}
                   className="text-purple-site py-6 font-site"
                 >
                   Read More
