@@ -17,7 +17,6 @@ export const FacebookIcon = ({ className }: { className?: string }) => {
         stroke-dasharray=""
         stroke-dashoffset="0"
         font-family="none"
-        font-weight="none"
         font-size="none"
         text-anchor="none"
       >
