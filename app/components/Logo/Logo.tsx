@@ -67,15 +67,15 @@ export const Logo = ({ className }: { className?: string }) => {
         </g>
       </g>
       <path
-        stroke-linecap="butt"
+        strokeLinecap="butt"
         transform="matrix(0, 2.088639, -2.088639, 0, 19.856305, 20.602792)"
         fill="none"
-        stroke-linejoin="miter"
+        strokeLinejoin="miter"
         d="M -0.000588622 0.499754 L 52.799952 0.499754 "
         stroke="#95c7f4"
-        stroke-width="1"
-        stroke-opacity="1"
-        stroke-miterlimit="4"
+        strokeWidth="1"
+        strokeOpacity="1"
+        strokeMiterlimit="4"
       />
       <g fill="#95c7f4" fillOpacity="1">
         <g transform="translate(31.601174, 128.263977)">

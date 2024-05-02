@@ -15,3 +15,15 @@ export const getWixClient = async () => {
 
   return wixClient;
 };
+
+export const getPageData = async (slug?: string) => {
+  const wixClient = await getWixClient();
+  const actualSlug = slug ? slug : null;
+  const { items } = await wixClient.items
+    .queryDataItems({
+      dataCollectionId: 'pages',
+    })
+    .eq('slug', actualSlug)
+    .find();
+  return items![0].data;
+};

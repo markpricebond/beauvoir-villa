@@ -1,19 +1,25 @@
-import { getWixClient } from '@app/hooks/useWixClientServer';
+import { getPageData, getWixClient } from '@app/hooks/useWixClientServer';
 import CalendarView from '@app/components/CalendarView';
+import MainContent from '@app/components/Layout/MainContent';
 
 export default async function Availability() {
   const wixClient = await getWixClient();
-  const { items } = await wixClient.items
+  const bookingsData = await wixClient.items
     .queryDataItems({
       dataCollectionId: 'bookings',
     })
     .find();
 
+  const pageData = await getPageData('availability');
+
+  if (!pageData) {
+    return null;
+  }
   return (
-    <div className="relative">
-      <div className="w-full flex flex-col items-center gap-12">
-        <CalendarView items={items} />
+    <MainContent pageData={pageData}>
+      <div className="mx-auto w-fit">
+        <CalendarView items={bookingsData.items} />
       </div>
-    </div>
+    </MainContent>
   );
 }

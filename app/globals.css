@@ -47,6 +47,21 @@
 
 h1 {
   font-family: var(--font-aboreto);
+  font-size: 72px;
+}
+
+h5 {
+  font-family: var(--font-roboto);
+  font-size: '16px';
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+}
+
+p {
+  font-family: var(--font-roboto);
+  font-size: '16px';
+  font-weight: 300;
+  line-height: 24px;
 }
 
 @layer components {
@@ -108,7 +123,7 @@ body {
   margin: 0;
   font: normal normal normal 18px/1.4em avenir-lt-w01_35-light1475496,
     sans-serif;
-  @apply text-black;
+  @apply text-white;
   @apply font-helvetica;
 }
 

@@ -1,7 +1,8 @@
 import { CarouselClient } from '@app/components/Carousel/Carousel';
 import { WixMediaImage } from '@app/components/Image/WixMediaImage';
-import { getWixClient } from './hooks/useWixClientServer';
-import Image from 'next/image';
+import { getPageData, getWixClient } from './hooks/useWixClientServer';
+import RichContentViewer from './elements/RichContentViewer';
+import FactsGrid from './components/FactsGrid';
 
 export default async function Home() {
   const wixClient = await getWixClient();
@@ -11,26 +12,12 @@ export default async function Home() {
     })
     .find();
 
-  const roomsItemsData = await wixClient.items
-    .queryDataItems({
-      dataCollectionId: 'rooms',
-    })
-    .find();
-
-  const pageItemsData = await wixClient.items
-    .queryDataItems({
-      dataCollectionId: 'pages',
-    })
-    .eq('title', 'Home')
-    .find();
-
-  const pageData = pageItemsData.items.map((item) => item.data)[0];
-  console.log(pageData);
+  const pageData = await getPageData('');
 
   if (!pageData) {
     return null;
   }
-
+  console.log(pageData);
   return (
     <div className="relative">
       <div className="relative grid grid-rows-6">
@@ -41,12 +28,17 @@ export default async function Home() {
             alt="Picture of the author"
           />
         </div>
-        <div className="bg-gradient-to-t from-white from-50% col-start-1 row-start-3 row-span-3 z-10"></div>
-        <div className="row-start-4 row-span-3 z-10 col-start-1 px-8">
+        <div className="bg-gradient-to-t from-black from-50% col-start-1 row-start-3 row-span-3 z-10"></div>
+        <div className="row-start-4 row-span-3 z-10 col-start-1 px-16 flex flex-col gap-y-8">
+          <h5>{pageData.preHeading.toUpperCase()}</h5>
           <h1>{pageData.title}</h1>
-          <h4>{pageData.description}</h4>
+          <div
+            className="mt-8"
+            dangerouslySetInnerHTML={{ __html: pageData.description }}
+          />
         </div>
       </div>
+      {/* <FactsGrid facts={pageData.facts} /> */}
       <CarouselClient items={reviewsItemsData.items} />
     </div>
   );
