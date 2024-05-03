@@ -50,41 +50,73 @@ h1 {
   font-size: 72px;
 }
 
+h2 {
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  font-size: 48px;
+}
+
+h4 {
+  font-family: var(--font-roboto);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 36px;
+}
+
 h5 {
   font-family: var(--font-roboto);
-  font-size: '16px';
-  letter-spacing: 0.1rem;
+  font-size: 18px;
+  letter-spacing: 0.15rem;
+  font-weight: 500;
+  color: #bbbbbb;
+}
+
+h6 {
+  font-family: var(--font-roboto);
+  font-size: 16px;
+  letter-spacing: 0.15rem;
   font-weight: 500;
 }
 
 p {
   font-family: var(--font-roboto);
-  font-size: '16px';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+p2 {
+  font-family: var(--font-roboto);
+  font-size: 12px;
   font-weight: 300;
   line-height: 24px;
 }
 
 @layer components {
   .btn-main {
-    @apply text-white;
-    @apply text-sm;
-    @apply font-medium;
-    @apply bg-blue-site;
-    @apply font-site;
-    @apply hover:bg-purple-800;
-    @apply focus:outline-none;
-    @apply focus:ring-4;
-    @apply focus:ring-gray-300;
-    @apply rounded-none;
-    @apply px-6;
-    @apply py-3;
+    @apply text-white border border-opacity-10 border-white rounded-sm hover:bg-opacity-40 bg-white bg-opacity-0 px-2;
+    font-family: var(--font-roboto);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+  }
+
+  .active-btn {
+    @apply text-white px-2;
+    font-family: var(--font-roboto);
+    font-size: 16px;
+    font-weight: 500;
+    color: #bbbbbb;
+    letter-spacing: 0.05rem;
   }
 
   .btn-main[disabled] {
-    @apply hover:text-white;
-    @apply bg-gray-400;
-    @apply border-gray-400;
-    @apply hover:bg-gray-400;
+    @apply border border-opacity-10 border-white rounded-sm bg-white bg-opacity-0 px-2;
+    font-family: var(--font-roboto);
+    font-size: 16px;
+    font-weight: 500;
+    color: #bbbbbb;
+    letter-spacing: 0.05rem;
   }
 
   .font-site {
@@ -96,24 +128,13 @@ p {
   }
 
   .input {
-    @apply block;
+    @apply block w-full mb-4 bg-transparent focus:ring-blue-site rounded-md
+    /* @apply block;
     @apply w-full;
-    @apply border-0;
     @apply border-b;
     @apply border-blue-site;
     @apply focus:outline-none;
-    @apply mb-4;
-  }
-
-  h1,
-  .title {
-    @apply text-4xl;
-    @apply font-bold;
-  }
-
-  h2 {
-    @apply text-base;
-    @apply sm:text-xl;
+    @apply mb-4; */;
   }
 }
 

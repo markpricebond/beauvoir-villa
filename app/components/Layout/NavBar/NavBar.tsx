@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 
 const navbarItems = [
   { ref: '/', label: 'Home' },
-  { ref: '#about', label: 'About' },
+  { ref: '/#about', label: 'About' },
   { ref: '/rooms', label: 'Rooms' },
   { ref: '/availability', label: 'Availability' },
   { ref: '/contact', label: 'Contact' },
@@ -23,9 +23,7 @@ const StyledNavLink = ({
   className?: string;
 }) => (
   <NavLink
-    className={`${className ?? ''} ${
-      isActive ? 'text-purple-site' : 'hover:text-purple-site'
-    }`}
+    className={`${className ?? ''} ${isActive ? 'active-btn' : 'btn-main'}`}
     {...linkProps}
   />
 );

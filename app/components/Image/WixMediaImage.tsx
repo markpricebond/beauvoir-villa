@@ -54,3 +54,12 @@ export function WixMediaImage({
     </div>
   );
 }
+
+export type WixImageType = {
+  description?: string;
+  slug: string;
+  alt?: string;
+  src: string;
+  title: string;
+  type: string;
+};

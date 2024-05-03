@@ -59,7 +59,7 @@ export default async function Rooms() {
                 />
               </div>
               <div className="bg-white relative mt-10 px-8 pb-10">
-                <h2 className="mb-10 font-site">{item.data!.title}</h2>
+                <h2 className="mb-10">{item.data!.title}</h2>
                 <p className="text-sm mb-6">{item.data!.short_description}</p>
                 <a
                   data-testid={testIds.NEWS_PAGE.NEWS_ITEM_CTA}

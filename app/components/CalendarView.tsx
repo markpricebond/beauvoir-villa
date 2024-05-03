@@ -68,21 +68,13 @@ export default function CalendarView({ items }: { items: CMSCollection }) {
   };
 
   return (
-    <div className="flex flex-col gap-y-8 items-center">
-      <div className="w-full flex flex-col gap-y-2">
-        <h4>Select a date to enquire</h4>
-        <p>Check in only available on Saturdays</p>
-        <div className="flex gap-x-2">
+    <div className="flex flex-col gap-y-8 items-center mt-12">
+      <div className="w-full flex flex-col gap-y-4">
+        <h2>Select a date to enquire</h2>
+        <p className="p2">Check in only available on Saturdays</p>
+        <div className="flex gap-x-2 mt-4">
           <div className="h-6 w-6 bg-blue-site opacity-60 rounded-sm"></div>
-          <p> booked</p>
-          {/* <div
-            className="h-6 w-6 rounded-sm"
-            style={{
-              background:
-                'linear-gradient(to right bottom, rgba(149, 199, 244, 0.6) 50%, rgba(0, 0, 0, 0) 50%)',
-            }}
-          ></div>
-          <p> = booked till 16:00</p> */}
+          <h5>BOOKED</h5>
         </div>
       </div>
       <Calendar
@@ -91,17 +83,14 @@ export default function CalendarView({ items }: { items: CMSCollection }) {
         calendarType="gregory"
         showNeighboringMonth={false}
         tileContent={tileContent}
-        tileClassName="relative bg-black disabled:!bg-black !text-white"
+        tileClassName="relative bg-black disabled:!bg-black !text-white rounded-sm"
         locale={browserLanguage}
         className="text-white !bg-black rounded-lg !border-none !decoration-solid"
       />
-      <div>
-        Want to book from {`${formatDate(date)}? `}
-        <Link
-          href={`/contact?startDate=${date}`}
-          className="text-blue-site underline"
-        >
-          enquire here
+      <div className="flex gap-x-2">
+        <p>Want to book from {`${formatDate(date)}?`}</p>
+        <Link href={`/contact?startDate=${date}`} className="btn-main">
+          Enquire now
         </Link>
       </div>
     </div>

@@ -16,6 +16,17 @@ export const getWixClient = async () => {
   return wixClient;
 };
 
+export const getPageBlocks = async (pageId?: string) => {
+  const wixClient = await getWixClient();
+
+  const { results } = await wixClient.items.queryReferencedDataItems({
+    dataCollectionId: 'pages',
+    referringItemFieldName: 'multireference',
+    referringItemId: pageId,
+  });
+  return results;
+};
+
 export const getPageData = async (slug?: string) => {
   const wixClient = await getWixClient();
   const actualSlug = slug ? slug : null;

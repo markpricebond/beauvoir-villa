@@ -9,8 +9,8 @@ const Footer = () => (
     data-testid={testIds.LAYOUT.FOOTER}
   >
     <div className="col-start-1 flex flex-col gap-y-2">
-      <Logo className="w-1/3 h-1/3" />
-      <p className="text-xs ml-1">© 2024 Beauvoir Holiday Villa</p>
+      <Logo className="w-1/5 h-1/5 fill-blue-site" />
+      <p className="p2 ml-1">© 2024 Beauvoir Holiday Villa</p>
       {/* <h3>chezbeauvoir@gmail.com</h3> */}
       <a
         href="https://www.facebook.com/beauvoirboutenac/"
