@@ -16,12 +16,15 @@ export const getWixClient = async () => {
   return wixClient;
 };
 
-export const getPageBlocks = async (pageId?: string) => {
+export const getPageCollection = async (
+  collectionName: string,
+  pageId?: string
+) => {
   const wixClient = await getWixClient();
 
   const { results } = await wixClient.items.queryReferencedDataItems({
     dataCollectionId: 'pages',
-    referringItemFieldName: 'multireference',
+    referringItemFieldName: collectionName,
     referringItemId: pageId,
   });
   return results;

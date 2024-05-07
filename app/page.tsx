@@ -1,7 +1,6 @@
 import { Testimonials } from '@app/components/Testimonials';
-import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 import {
-  getPageBlocks,
+  getPageCollection,
   getPageData,
   getWixClient,
 } from './hooks/useWixClientServer';
@@ -25,11 +24,16 @@ export default async function Home() {
 
   const pageData = await getPageData('');
 
-  const pageBlocks = await getPageBlocks(pageData?._id);
-
   if (!pageData) {
     return null;
   }
+
+  const pageBlocks = await getPageCollection('multireference', pageData?._id);
+  const pageFacts = await (
+    await getPageCollection('facts', pageData?._id)
+  ).map((fact) => fact.dataItem?.data);
+
+  console.log(pageFacts);
 
   const backgroundImageRotation = () => {
     imageCounter += 1;
@@ -38,8 +42,7 @@ export default async function Home() {
 
   return (
     <div className="relative">
-      {/* <FactsGrid facts={pageData.facts} /> */}
-      <MainContent pageData={pageData}>
+      <MainContent pageData={pageData} pageFacts={pageFacts}>
         {pageBlocks.map((block, index) => {
           if (block.dataItem) {
             return (

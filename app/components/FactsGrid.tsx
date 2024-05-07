@@ -1,18 +1,29 @@
+import { BedIcon } from './Icons/Bed';
+import { LeafIcon } from './Icons/Leaf';
+import { PoolIcon } from './Icons/Pool';
+
 export default function FactsGrid({
   facts,
 }: {
-  facts: { title: string; icon: any }[];
+  facts?: (Record<string, any> | null | undefined)[];
 }) {
+  if (!facts) {
+    return null;
+  }
+
   return (
-    <div>
-      <div className="grid-cols-3 divide-y divide-x">
-        {facts.map((fact, index) => {
-          return (
-            <div key={index} className="flex flex-col">
-              {fact.title}
-            </div>
-          );
-        })}
+    <div className="flex gap-x-8 justify-start items-end mt-8">
+      <div className="flex gap-x-4">
+        <LeafIcon className="w-8 h-8" />
+        <p className="mt-auto">Rural Setting</p>
+      </div>
+      <div className="flex gap-x-4">
+        <BedIcon className="w-8 h-8" />
+        <p className="mt-auto">Sleeps 8</p>
+      </div>
+      <div className="flex gap-x-4">
+        <PoolIcon className="w-8 h-8" />
+        <p className="mt-auto">10m x 5m Heated Pool</p>
       </div>
     </div>
   );

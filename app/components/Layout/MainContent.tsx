@@ -1,10 +1,15 @@
 import { PropsWithChildren } from 'react';
 import { WixMediaImage } from '../Image/WixMediaImage';
+import FactsGrid from '../FactsGrid';
 
 const MainContent = ({
   children,
   pageData,
-}: PropsWithChildren & { pageData: Record<string, any> | null }) => {
+  pageFacts,
+}: PropsWithChildren & {
+  pageData: Record<string, any> | null;
+  pageFacts?: (Record<string, any> | null | undefined)[];
+}) => {
   if (!pageData) {
     return null;
   }
@@ -17,8 +22,9 @@ const MainContent = ({
         </div>
         <div className="bg-gradient-to-t from-black from-50% col-start-1 row-start-3 row-span-3 z-10"></div>
         <div className="row-start-4 row-span-2 z-10 col-start-1 px-16 flex flex-col gap-y-6 self-center">
-          <h5>{preHeading.toUpperCase()}</h5>
+          {preHeading && <h5>{preHeading.toUpperCase()}</h5>}
           <h1>{title}</h1>
+          {pageFacts && <FactsGrid facts={pageFacts} />}
           {description && (
             <div
               className="mt-8"
