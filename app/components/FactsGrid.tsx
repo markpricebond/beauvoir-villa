@@ -12,7 +12,7 @@ export default function FactsGrid({
   }
 
   return (
-    <div className="flex gap-x-8 justify-start items-end mt-8">
+    <div className="flex flex-col md:flex-row gap-x-8 justify-start gap-y-2 md:items-end mt-8">
       <div className="flex gap-x-4">
         <LeafIcon className="w-8 h-8" />
         <p className="mt-auto">Rural Setting</p>
@@ -22,7 +22,7 @@ export default function FactsGrid({
         <p className="mt-auto">Sleeps 8</p>
       </div>
       <div className="flex gap-x-4">
-        <PoolIcon className="w-8 h-8" />
+        <PoolIcon className="w-6 h-6" />
         <p className="mt-auto">10m x 5m Heated Pool</p>
       </div>
     </div>

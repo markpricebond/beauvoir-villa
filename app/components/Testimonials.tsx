@@ -32,18 +32,19 @@ export const Testimonials = ({
           return (
             <div
               key={i}
-              className="z-10 basis-1/3 h-40 lg:h-64 flex flex-col gap-y-4 justify-between bg-black text-white p-4 m-4 border border-white rounded-lg"
+              className="z-10 md:basis-1/3 md:h-64 flex flex-col gap-y-4 justify-between bg-black text-white p-4 m-4 border border-white rounded-lg"
             >
-              <p>{`"${reviewText}"`}</p>
-              <div className="flex items-center gap-x-4">
-                <div className="relative h-12 w-12">
+              <p>{`“${reviewText}”`}</p>
+              <div className="flex items-center gap-x-4 relative">
+                <div className="md:relative h-12 w-12 absolute -right-6 -bottom-6 rotate-12">
                   <WixMediaImage
                     media={mainImage}
                     alt="Picture of person reviewing Beauvoir Villa"
                     className="rounded-full"
+                    disableZoom={true}
                   />
                 </div>
-                <p>{name}</p>
+                <p className="p2">{name}</p>
               </div>
             </div>
           );

@@ -19,13 +19,17 @@ export const GenericContentBlock = ({
   return (
     <div
       id={pageAnchorId ?? title.toLowerCase().replace(' ', '-')}
-      className="py-20 flex flex-col gap-y-8"
+      className="py-12 md:py-20 flex flex-col gap-y-8"
     >
       {preHeader && <h4>{preHeader.toUpperCase()}</h4>}
       <h2>{title}</h2>
 
       {image && (
-        <WixMediaImage media={image} className="rounded-lg max-w-screen-md" />
+        <WixMediaImage
+          media={image}
+          className="rounded-lg max-w-screen-md"
+          disableZoom={true}
+        />
       )}
       {copy && (
         <div className="mt-8" dangerouslySetInnerHTML={{ __html: copy }} />

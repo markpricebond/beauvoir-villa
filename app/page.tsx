@@ -29,14 +29,17 @@ export default async function Home() {
   }
 
   const pageBlocks = await getPageCollection('multireference', pageData?._id);
-  const pageFacts = await (
-    await getPageCollection('facts', pageData?._id)
-  ).map((fact) => fact.dataItem?.data);
-
-  console.log(pageFacts);
+  const pageFactsData = await getPageCollection('facts', pageData?._id);
+  const pageFacts = pageFactsData.map((fact) => fact.dataItem?.data);
 
   const backgroundImageRotation = () => {
-    imageCounter += 1;
+    let totalBgImages = pageData.genericBackgroundImages.length;
+    if (imageCounter < totalBgImages) {
+      imageCounter += 1;
+    } else {
+      imageCounter = 0;
+    }
+
     return pageData.genericBackgroundImages[imageCounter];
   };
 

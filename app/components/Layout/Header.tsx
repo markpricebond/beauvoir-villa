@@ -22,7 +22,7 @@ const Header = () => {
         href="/"
         className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6"
       >
-        <Logo className="w-1/3 h-1/3 my-4 fill-white" />
+        <Logo className="w-1/3 h-1/3 my-4 fill-white hidden md:block" />
       </a>
       <div>
         <NavBar />
