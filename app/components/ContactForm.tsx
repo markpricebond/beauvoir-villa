@@ -1,6 +1,6 @@
 export const ContactForm = ({ preFilledDate }: { preFilledDate?: Date }) => {
   return (
-    <form className="border border-white p-8 rounded-lg">
+    <form className="border border-white p-8 rounded-lg" id="contact-form">
       <div className="flex flex-col sm:flex-row sm:gap-12">
         <div className="basis-1/2">
           <TextInput
@@ -43,7 +43,7 @@ export const ContactForm = ({ preFilledDate }: { preFilledDate?: Date }) => {
       </div>
       <TextInput name="message" label="Message" type="text" />
 
-      <button className="btn-main w-full mt-6 text-xl" type="submit">
+      <button className="btn-main mt-6 py-1 px-4" type="submit">
         Send
       </button>
     </form>
@@ -62,7 +62,7 @@ const TextInput = ({
   required?: boolean;
 }) => {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-2 input-text">
       <label className="text-xs" htmlFor={name}>
         {label}
       </label>

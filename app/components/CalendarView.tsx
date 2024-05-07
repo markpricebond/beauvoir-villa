@@ -89,7 +89,10 @@ export default function CalendarView({ items }: { items: CMSCollection }) {
       />
       <div className="flex gap-x-2">
         <p>Want to book from {`${formatDate(date)}?`}</p>
-        <Link href={`/contact?startDate=${date}`} className="btn-main">
+        <Link
+          href={`/contact?startDate=${date}#contact-form`}
+          className="btn-main"
+        >
           Enquire now
         </Link>
       </div>

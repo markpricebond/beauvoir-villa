@@ -1,5 +1,3 @@
-'use client';
-
 import { NavLink } from './NavLink';
 import { useCallback, useState } from 'react';
 import type { LinkProps } from 'next/link';

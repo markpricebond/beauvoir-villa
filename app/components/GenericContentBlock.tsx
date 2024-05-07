@@ -5,6 +5,7 @@ export type ContentBlockDataType = {
   title: string;
   copy?: string;
   image?: string;
+  pageAnchorId?: string;
 };
 export const GenericContentBlock = ({
   block,
@@ -14,10 +15,10 @@ export const GenericContentBlock = ({
   if (!block) {
     return null;
   }
-  const { preHeader, title, copy, image } = block;
+  const { preHeader, title, copy, image, pageAnchorId } = block;
   return (
     <div
-      id={title.toLowerCase().replace(' ', '-')}
+      id={pageAnchorId ?? title.toLowerCase().replace(' ', '-')}
       className="py-20 flex flex-col gap-y-8"
     >
       {preHeader && <h4>{preHeader.toUpperCase()}</h4>}
