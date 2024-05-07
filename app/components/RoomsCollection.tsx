@@ -47,35 +47,5 @@ export const RoomsCollection = ({
         );
       })}
     </div>
-    // <div className="grid lg:grid-cols-[2fr_1fr] gap-x-16 gap-y-24">
-    //   {rooms.map((room, index) => {
-    //     if (!room) {
-    //       return;
-    //     }
-    //     const { roomImage, title, description, roomFeatures } = room.data;
-    //     return (
-    //       <div
-    //         className="grid grid-rows-2 gap-y-4 relative grid-cols-1"
-    //         key={index}
-    //       >
-    //         <WixMediaImage
-    //           media={roomImage}
-    //           className="rounded-lg"
-    //           disableZoom={true}
-    //           height={300}
-    //         />
-    //         <div className="flex flex-col gap-y-4">
-    //           <h2>{title}</h2>
-    //           <div dangerouslySetInnerHTML={{ __html: description }} />
-    //           <div className="flex flex-wrap gap-x-8 justify-start relative h5 text-grey-site">
-    //             {roomFeatures.map((feature: string, index: number) => (
-    //               <p key={index}>{feature.toUpperCase()}</p>
-    //             ))}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     );
-    //   })}
-    // </div>
   );
 };
