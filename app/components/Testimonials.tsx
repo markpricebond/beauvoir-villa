@@ -11,7 +11,7 @@ export const Testimonials = ({
   items,
   background,
 }: {
-  items: CMSCollection;
+  items: (Record<string, any> | null | undefined)[];
   background?: WixImageType;
 }) => {
   return (
@@ -30,23 +30,25 @@ export const Testimonials = ({
       <h5 className="mx-8 z-10">TESTIMONIALS</h5>
       <div className="grid lg:grid-cols-3 justify-center mx-4">
         {items.map((item, i) => {
-          const { name, reviewText, mainImage } = item.data as ReviewItem;
+          if (!item) {
+            return null;
+          }
           return (
             <div
               key={i}
               className="z-10 md:basis-1/3 md:h-64 flex flex-col gap-y-4 justify-between bg-black text-white p-4 m-4 border border-white rounded-lg"
             >
-              <p>{`“${reviewText}”`}</p>
+              <p>{`“${item.data.reviewText}”`}</p>
               <div className="flex items-center gap-x-4 relative">
-                <div className="md:relative h-12 w-12 absolute -right-6 -bottom-6 rotate-12">
+                <div className="md:relative h-12 w-12 absolute max-md:-right-6 max-md:-bottom-6 max-md:rotate-12">
                   <WixMediaImage
-                    media={mainImage}
+                    media={item.data.mainImage}
                     alt="Picture of person reviewing Beauvoir Villa"
                     className="rounded-full"
                     disableZoom={true}
                   />
                 </div>
-                <p className="p2">{name}</p>
+                <p className="p2">{item.data.name}</p>
               </div>
             </div>
           );

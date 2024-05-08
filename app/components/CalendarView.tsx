@@ -50,7 +50,6 @@ export default function CalendarView({ items }: { items: CMSCollection }) {
         return (
           <div
             style={{
-              // 'linear-gradient(to right bottom, rgba(149, 199, 244, 0.6) 50%, rgba(0, 0, 0, 0) 50%)',
               backgroundColor: 'rgba(149, 199, 244, 0.6)',
               position: 'absolute',
               top: 0,

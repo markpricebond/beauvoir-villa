@@ -30,6 +30,16 @@ export const getPageCollection = async (
   return results;
 };
 
+export const getCollectionOfItems = async (collectionId: string) => {
+  const wixClient = await getWixClient();
+  const { items } = await wixClient.items
+    .queryDataItems({
+      dataCollectionId: collectionId,
+    })
+    .find();
+  return items;
+};
+
 export const getPageData = async (slug?: string) => {
   const wixClient = await getWixClient();
   const actualSlug = slug ? slug : null;

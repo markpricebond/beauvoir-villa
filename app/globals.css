@@ -138,7 +138,7 @@ p {
 
 @layer components {
   .btn-main {
-    @apply text-white border border-white rounded-sm hover:bg-opacity-40 bg-white bg-opacity-0 px-2 drop-shadow-lg hover:scale-95 hover:translate-x-1 hover:translate-y-1 transition-all self-center;
+    @apply text-white rounded-sm hover:bg-opacity-40 bg-white bg-opacity-0 px-2 drop-shadow-lg hover:scale-95 hover:translate-x-1 hover:translate-y-1 transition-all self-center;
     font-family: var(--font-roboto);
     font-size: 16px;
     font-weight: 300;
@@ -146,7 +146,7 @@ p {
   }
 
   .active-btn {
-    @apply text-white px-2 self-center;
+    @apply text-white px-2 self-center underline;
     font-family: var(--font-roboto);
     font-size: 16px;
     font-weight: 300;
@@ -154,7 +154,7 @@ p {
   }
 
   .btn-main[disabled] {
-    @apply border border-white rounded-sm bg-white bg-opacity-0 px-2 self-center;
+    @apply border  rounded-sm bg-white bg-opacity-0 px-2 self-center;
     font-family: var(--font-roboto);
     font-size: 16px;
     font-weight: 300;

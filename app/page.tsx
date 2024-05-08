@@ -1,5 +1,6 @@
 import { Testimonials } from '@app/components/Testimonials';
 import {
+  getCollectionOfItems,
   getPageCollection,
   getPageData,
   getWixClient,
@@ -10,24 +11,18 @@ import {
   ContentBlockDataType,
   GenericContentBlock,
 } from './components/GenericContentBlock';
+import { RoomPreview } from './components/RoomPreview';
 
 export default async function Home() {
   let imageCounter = -1;
 
-  const wixClient = await getWixClient();
-
-  const reviewsItemsData = await wixClient.items
-    .queryDataItems({
-      dataCollectionId: 'VillaReviews',
-    })
-    .find();
-
   const pageData = await getPageData('');
+  const roomData = await getCollectionOfItems('rooms');
+  const reviewData = await getCollectionOfItems('VillaReviews');
 
   if (!pageData) {
     return null;
   }
-
   const pageBlocks = await getPageCollection('multireference', pageData?._id);
   const pageFactsData = await getPageCollection('facts', pageData?._id);
   const pageFacts = pageFactsData.map((fact) => fact.dataItem?.data);
@@ -57,10 +52,13 @@ export default async function Home() {
           }
         })}
       </MainContent>
-      <Testimonials
-        items={reviewsItemsData.items}
-        background={backgroundImageRotation()}
-      />
+      <RoomPreview rooms={roomData} />
+      {reviewData && (
+        <Testimonials
+          items={reviewData}
+          background={backgroundImageRotation()}
+        />
+      )}
     </div>
   );
 }

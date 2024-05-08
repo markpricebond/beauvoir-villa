@@ -24,7 +24,6 @@ export default async function Rooms() {
   }
 
   const pageBlocks = await getPageCollection('multireference', pageData?._id);
-  console.log(items);
   return (
     <div className="relative">
       <MainContent pageData={pageData}>

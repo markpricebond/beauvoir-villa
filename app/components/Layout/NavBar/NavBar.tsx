@@ -64,7 +64,7 @@ export function NavBar() {
               </StyledNavLink>
             </li>
           ))}
-          <Logo className="block md:hidden w-1/2 h-1/2 mt-8" />
+          <Logo className="block md:hidden w-1/2 h-1/2 mt-8 mix-blend-difference" />
         </ul>
       </nav>
     </>
