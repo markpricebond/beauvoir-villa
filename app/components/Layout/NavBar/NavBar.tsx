@@ -3,6 +3,8 @@ import { useCallback, useState } from 'react';
 import type { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Logo } from '@app/components/Logo/Logo';
+import { Hamburger } from './Hamburger';
+import classNames from 'classnames';
 
 const navbarItems = [
   { ref: '/', label: 'Home' },
@@ -35,39 +37,19 @@ export function NavBar() {
     () => setIsMenuShown(!isMenuShown),
     [isMenuShown]
   );
+
   return (
     <>
-      <button
-        className="block md:hidden float-right relative z-50"
-        onClick={toggleOpen}
-      >
-        <div className="space-y-2 absolute top-0 right-2 bg-blue-site p-2 rounded-md">
-          {(isMenuShown
-            ? [
-                'rotate-45 translate-y-[13px]',
-                'opacity-0 h-0',
-                '-rotate-45 translate-y-[-13px]',
-              ]
-            : ['', '', '']
-          ).map((className, index) => (
-            <span
-              key={index}
-              className={
-                'block h-[3px] w-6 bg-black transform transition duration-500 ease-in-out ' +
-                className
-              }
-            ></span>
-          ))}
-        </div>
-      </button>
+      <Hamburger showMenu={isMenuShown} handleToggle={toggleOpen} />
       <nav
-        className={`${
-          isMenuShown
-            ? 'max-md:w-full max-md:opacity-100'
-            : 'max-md:w-0 max-md:opacity-0'
-        } transition-all duration-500 ease-in-out md:block overflow-hidden max-md:absolute max-md:animate-sideways-once max-md:h-screen max-md:bg-black max-sm:pt-16 max-md:pt-24 z-40 top-0 right-0`}
+        className={classNames(
+          isMenuShown ? 'block' : 'hidden',
+          'max-md:h-screen z-40 right-0 top-0 md:top-4 md:right-8 absolute',
+          'pr-8 pl-6 pb-8 pt-10',
+          'bg-black md:rounded-md'
+        )}
       >
-        <ul className="flex flex-col items-center md:flex-row gap-8 md:gap-4 min-[900px]:gap-5 lg:gap-12 justify-end">
+        <ul className="flex flex-col items-center md:items-start gap-8 max-sm:pt-8">
           {navbarItems.map(({ ref, label }) => (
             <li key={ref} className="relative">
               <StyledNavLink
@@ -80,7 +62,6 @@ export function NavBar() {
               >
                 {label}
               </StyledNavLink>
-              <span className="absolute -bottom-5 md:hidden border-b-2 w-48 left-[calc(50%_-_theme(space.24))]" />
             </li>
           ))}
           <Logo className="block md:hidden w-1/2 h-1/2 mt-8" />

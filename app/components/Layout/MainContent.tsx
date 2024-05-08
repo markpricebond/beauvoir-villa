@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { WixMediaImage } from '../Image/WixMediaImage';
 import FactsGrid from '../FactsGrid';
 
-const MainContent = ({
+export const MainContent = ({
   children,
   pageData,
   pageFacts,
@@ -22,6 +22,7 @@ const MainContent = ({
         </div>
         <div className="row-start-2 row-span-2 bg-gradient-to-t from-black w-full z-10 col-start-1" />
         <div className="px-8 md:px-16 row-start-4 row-span-2 col-start-1">
+          <h5>{preHeading.toUpperCase()}</h5>
           <h1>{title}</h1>
           {pageFacts && <FactsGrid facts={pageFacts} />}
           {description && (
@@ -37,5 +38,3 @@ const MainContent = ({
     </>
   );
 };
-
-export default MainContent;

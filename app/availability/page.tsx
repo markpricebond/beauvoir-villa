@@ -1,6 +1,6 @@
 import { getPageData, getWixClient } from '@app/hooks/useWixClientServer';
 import CalendarView from '@app/components/CalendarView';
-import MainContent from '@app/components/Layout/MainContent';
+import { MainContent } from '@app/components/Layout/MainContent';
 
 export default async function Availability() {
   const wixClient = await getWixClient();

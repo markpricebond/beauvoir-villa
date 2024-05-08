@@ -5,7 +5,7 @@ import {
   getWixClient,
 } from './hooks/useWixClientServer';
 import FactsGrid from './components/FactsGrid';
-import MainContent from './components/Layout/MainContent';
+import { MainContent } from './components/Layout/MainContent';
 import {
   ContentBlockDataType,
   GenericContentBlock,

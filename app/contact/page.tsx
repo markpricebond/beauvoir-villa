@@ -1,5 +1,5 @@
 import { ContactForm } from '@app/components/ContactForm';
-import MainContent from '@app/components/Layout/MainContent';
+import { MainContent } from '@app/components/Layout/MainContent';
 import { getPageData } from '@app/hooks/useWixClientServer';
 export default async function Page({
   searchParams,

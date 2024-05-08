@@ -28,10 +28,13 @@ export const RoomsCollection = ({
                 objectFit="cover"
               />
             </div>
-            <div className="flex flex-col justify-between flex-grow gap-y-2">
+            <div className="flex flex-col justify-between flex-grow gap-y-8">
               <div>
                 <h2>{title}</h2>
-                <div dangerouslySetInnerHTML={{ __html: description }} />
+                <div
+                  className="mt-2"
+                  dangerouslySetInnerHTML={{ __html: description }}
+                />
               </div>
               <div className="flex flex-wrap gap-x-8 justify-start h5 text-grey-site">
                 {roomFeatures.map((feature: string, index: number) => (

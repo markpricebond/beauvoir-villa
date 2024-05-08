@@ -3,7 +3,7 @@ import {
   getPageData,
   getWixClient,
 } from '@app/hooks/useWixClientServer';
-import MainContent from '@app/components/Layout/MainContent';
+import { MainContent } from '@app/components/Layout/MainContent';
 import {
   ContentBlockDataType,
   GenericContentBlock,

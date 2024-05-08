@@ -12,18 +12,20 @@ export const Testimonials = ({
   background,
 }: {
   items: CMSCollection;
-  background: WixImageType;
+  background?: WixImageType;
 }) => {
   return (
     <div className="flex flex-col gap-y-2 relative py-12">
-      <div className="absolute top-0 bottom-0 w-full opacity-50">
-        <WixMediaImage
-          media={background.src}
-          sizes="100vw"
-          objectFit="cover"
-          disableZoom={true}
-        />
-      </div>
+      {background && (
+        <div className="absolute top-0 bottom-0 w-full opacity-50">
+          <WixMediaImage
+            media={background.src}
+            sizes="100vw"
+            objectFit="cover"
+            disableZoom={true}
+          />
+        </div>
+      )}
 
       <h5 className="mx-8 z-10">TESTIMONIALS</h5>
       <div className="grid lg:grid-cols-3 justify-center mx-4">
