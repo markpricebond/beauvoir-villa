@@ -17,7 +17,7 @@ const MainContent = ({
   return (
     <>
       <div className="grid">
-        <div className="relative row-start-1 row-span-2 col-start-1">
+        <div className="relative row-start-1 row-span-2 col-start-1 max-h-[60vh]">
           <WixMediaImage media={mainImage} alt={title} />
         </div>
         <div className="row-start-2 row-span-2 bg-gradient-to-t from-black w-full z-10 col-start-1" />
