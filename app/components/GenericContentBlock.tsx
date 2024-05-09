@@ -1,4 +1,9 @@
-import { WixMediaImage } from './Image/WixMediaImage';
+/* eslint-disable jsx-a11y/alt-text */
+import Image from 'next/image';
+import {
+  convertToNextImageProps,
+  getImageProps,
+} from '@app/utils/wix-media-image';
 
 export type ContentBlockDataType = {
   preHeader?: string;
@@ -25,10 +30,11 @@ export const GenericContentBlock = ({
       <h2>{title}</h2>
 
       {image && (
-        <WixMediaImage
-          media={image}
-          className="rounded-lg max-w-screen-md"
-          disableZoom={true}
+        <Image
+          {...convertToNextImageProps(getImageProps(image))}
+          style={{ objectFit: 'contain' }}
+          className="rounded-md md:rounded-lg max-sm:max-w-full max-w-[60vw]"
+          sizes="(max-width: 768px) 100vw, 66vw"
         />
       )}
       {copy && (

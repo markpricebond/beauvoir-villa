@@ -12,6 +12,14 @@ const nextConfig = {
   images: {
     domains: ['**', '', 'static.wixstatic.com'],
     formats: ['image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'static.wixstatic.com',
+        port: '',
+        pathname: '/media/**',
+      },
+    ],
   },
 };
 

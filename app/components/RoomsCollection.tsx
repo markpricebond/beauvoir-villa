@@ -1,5 +1,9 @@
-import { WixMediaImage } from './Image/WixMediaImage';
-
+/* eslint-disable jsx-a11y/alt-text */
+import {
+  convertToNextImageProps,
+  getImageProps,
+} from '@app/utils/wix-media-image';
+import Image from 'next/image';
 export const RoomsCollection = ({
   rooms,
 }: {
@@ -20,12 +24,11 @@ export const RoomsCollection = ({
 
         return (
           <div className="flex flex-col gap-y-8" key={index}>
-            <div className="relative h-48 md:h-56">
-              <WixMediaImage
-                media={roomImage}
-                className="rounded-lg"
-                disableZoom={true}
-                objectFit="cover"
+            <div className="relative">
+              <Image
+                {...convertToNextImageProps(getImageProps(roomImage))}
+                className="rounded-lg w-full"
+                style={{ objectFit: 'cover', aspectRatio: 16 / 9 }}
               />
             </div>
             <div className="flex flex-col justify-between flex-grow gap-y-8">
