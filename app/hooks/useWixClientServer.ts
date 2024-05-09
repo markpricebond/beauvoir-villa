@@ -13,6 +13,9 @@ export const getWixClient = async () => {
     auth: OAuthStrategy({ clientId: '3e125a89-df2e-43c1-a2f9-948b17331e8d' }),
   });
 
+  const tokens = await wixClient.auth.generateVisitorTokens();
+  wixClient.auth.setTokens(tokens);
+
   return wixClient;
 };
 
@@ -32,7 +35,7 @@ export const getPageCollection = async (
 
 export const getCollectionOfItems = async (collectionId: string) => {
   const wixClient = await getWixClient();
-  const { items } = await wixClient.items
+  const items = wixClient.items
     .queryDataItems({
       dataCollectionId: collectionId,
     })

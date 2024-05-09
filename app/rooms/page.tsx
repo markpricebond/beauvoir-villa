@@ -1,4 +1,5 @@
 import {
+  getCollectionOfItems,
   getPageCollection,
   getPageData,
   getWixClient,
@@ -9,17 +10,12 @@ import {
   GenericContentBlock,
 } from '@app/components/GenericContentBlock';
 import { RoomsCollection } from '@app/components/RoomsCollection';
-export default async function Rooms() {
-  const wixClient = await getWixClient();
-  const { items } = await wixClient.items
-    .queryDataItems({
-      dataCollectionId: 'rooms',
-    })
-    .find();
 
+export default async function Rooms() {
+  const rooms = await getCollectionOfItems('rooms');
   const pageData = await getPageData('rooms');
 
-  if (!pageData) {
+  if (!pageData || !rooms) {
     return null;
   }
 
@@ -37,7 +33,7 @@ export default async function Rooms() {
             );
           }
         })}
-        <RoomsCollection rooms={items} />
+        <RoomsCollection rooms={rooms.items} />
       </MainContent>
     </div>
   );

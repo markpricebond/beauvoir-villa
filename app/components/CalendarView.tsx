@@ -3,13 +3,19 @@
 import { CMSCollection } from '@app/hooks/useWixClientServer';
 import { formatDate } from '@app/utils/date-formatter';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-const browserLanguage = navigator.language;
-
 export default function CalendarView({ items }: { items: CMSCollection }) {
+  const [browserLanguage, setBrowserLanguage] = useState<string>();
+
+  useEffect(() => {
+    if (navigator) {
+      setBrowserLanguage(navigator.language);
+    }
+  }, []);
+
   const itemsData = items.map((item) => item.data);
 
   const todaysDate = new Date();
@@ -83,7 +89,7 @@ export default function CalendarView({ items }: { items: CMSCollection }) {
         showNeighboringMonth={false}
         tileContent={tileContent}
         tileClassName="relative bg-black disabled:!bg-black !text-white rounded-sm"
-        locale={browserLanguage}
+        locale={browserLanguage || 'en'}
         className="text-white !bg-black rounded-lg !border-none !decoration-solid"
       />
       <div className="md:flex gap-x-2 mr-auto">
