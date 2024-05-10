@@ -1,4 +1,7 @@
-import { Testimonials } from '@app/components/Testimonials';
+import {
+  ReviewCollectionType,
+  Testimonials,
+} from '@app/components/Testimonials';
 import {
   getCollectionOfItems,
   getPageCollection,
@@ -9,14 +12,18 @@ import {
   ContentBlockDataType,
   GenericContentBlock,
 } from './components/GenericContentBlock';
-import { RoomPreview } from './components/RoomPreview';
+import { RoomCollectionType, RoomPreview } from './components/RoomPreview';
 
 export default async function Home() {
   let imageCounter = -1;
 
   const pageData = await getPageData('');
+
   const roomData = await getCollectionOfItems('rooms');
+  const rooms = roomData.items;
   const reviewData = await getCollectionOfItems('VillaReviews');
+  const reviews = reviewData.items;
+  console.log(reviews);
 
   if (!pageData) {
     return null;
@@ -50,10 +57,10 @@ export default async function Home() {
           }
         })}
       </MainContent>
-      <RoomPreview rooms={roomData} />
+      <RoomPreview rooms={rooms as RoomCollectionType} />
       {reviewData && (
         <Testimonials
-          items={reviewData}
+          reviews={reviews as ReviewCollectionType}
           background={backgroundImageRotation()}
         />
       )}

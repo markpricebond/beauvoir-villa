@@ -10,11 +10,20 @@ import {
   getImageProps,
 } from '@app/utils/wix-media-image';
 
-export const RoomPreview = ({
-  rooms,
-}: {
-  rooms: (Record<string, any> | null | undefined)[];
-}) => {
+export type RoomCollectionType = {
+  dataCollectionId?: string;
+  data?: {
+    roomImage: string;
+    roomFeatures?: string[];
+    description?: string;
+    _id: string;
+    floor?: string;
+    title: string;
+  } | null;
+  _id: string;
+}[];
+
+export const RoomPreview = ({ rooms }: { rooms: RoomCollectionType }) => {
   const roomData = rooms.map((room) => {
     if (!room) {
       return null;
@@ -51,18 +60,21 @@ export const RoomPreview = ({
           responsive={responsive}
           itemClass="mx-2 md:mx-4 my-12 md:mx-12"
         >
-          {roomData.map((room, index) => (
-            <Link href="/rooms" key={index} className="relative h-full">
-              <Image
-                {...convertToNextImageProps(getImageProps(room.roomImage))}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="h-full rounded-md hover:opacity-40"
-              />
-              <div className="absolute top-0 bottom-0 right-0 left-0 flex items-center justify-center hover:opacity-100 opacity-0 bg-black bg-opacity-50">
-                <h6>{room.title}</h6>
-              </div>
-            </Link>
-          ))}
+          {roomData.map((room, index) => {
+            if (!room) return null;
+            return (
+              <Link href="/rooms" key={index} className="relative h-full">
+                <Image
+                  {...convertToNextImageProps(getImageProps(room.roomImage))}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="h-full rounded-md hover:opacity-40"
+                />
+                <div className="absolute top-0 bottom-0 right-0 left-0 flex items-center justify-center hover:opacity-100 opacity-0 bg-black bg-opacity-50">
+                  <h6>{room.title}</h6>
+                </div>
+              </Link>
+            );
+          })}
         </Carousel>
       </div>
     </div>
