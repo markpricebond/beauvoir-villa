@@ -19,8 +19,8 @@ export const MainContent = ({
   if (!pageData) {
     return null;
   }
-  const { mainImage, preHeading, title, description } = pageData;
-
+  const { mainImage, preHeading, title, description } = pageData[0].data;
+  console.log(preHeading);
   return (
     <>
       <div className="grid">

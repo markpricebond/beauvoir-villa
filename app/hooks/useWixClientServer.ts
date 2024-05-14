@@ -1,4 +1,9 @@
-import { createClient, OAuthStrategy } from '@wix/sdk';
+import {
+  createClient,
+  IOAuthStrategy,
+  OAuthStrategy,
+  WixClient,
+} from '@wix/sdk';
 import { items } from '@wix/data';
 
 export type CMSCollection = Array<{
@@ -7,24 +12,32 @@ export type CMSCollection = Array<{
   _id?: string;
 }>;
 
-export const getWixClient = async () => {
+type OurWixClient = WixClient<
+  undefined,
+  IOAuthStrategy,
+  { items: typeof items }
+>;
+
+export async function getWixClient(): Promise<OurWixClient> {
+  const clientId = process.env.WIX_CLIENT_ID;
+  console.log(clientId);
+  if (!clientId) {
+    throw new Error('Env not set up');
+  }
+
   const wixClient = createClient({
     modules: { items },
-    auth: OAuthStrategy({ clientId: '3e125a89-df2e-43c1-a2f9-948b17331e8d' }),
+    auth: OAuthStrategy({ clientId }),
   });
 
-  const tokens = await wixClient.auth.generateVisitorTokens();
-  wixClient.auth.setTokens(tokens);
-
   return wixClient;
-};
+}
 
 export const getPageCollection = async (
+  wixClient: OurWixClient,
   collectionName: string,
   pageId?: string
 ) => {
-  const wixClient = await getWixClient();
-
   const { results } = await wixClient.items.queryReferencedDataItems({
     dataCollectionId: 'pages',
     referringItemFieldName: collectionName,
@@ -33,8 +46,10 @@ export const getPageCollection = async (
   return results;
 };
 
-export const getCollectionOfItems = async (collectionId: string) => {
-  const wixClient = await getWixClient();
+export const getCollectionOfItems = async (
+  wixClient: OurWixClient,
+  collectionId: string
+) => {
   const items = wixClient.items
     .queryDataItems({
       dataCollectionId: collectionId,
@@ -43,14 +58,13 @@ export const getCollectionOfItems = async (collectionId: string) => {
   return items;
 };
 
-export const getPageData = async (slug?: string) => {
-  const wixClient = await getWixClient();
+export const getPageData = async (wixClient: OurWixClient, slug?: string) => {
   const actualSlug = slug ? slug : null;
-  const { items } = await wixClient.items
+  const items = wixClient.items
     .queryDataItems({
       dataCollectionId: 'pages',
     })
     .eq('slug', actualSlug)
     .find();
-  return items![0].data;
+  return items;
 };

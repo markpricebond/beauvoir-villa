@@ -4,6 +4,7 @@ import {
   convertToNextImageProps,
   getImageProps,
 } from '@app/utils/wix-media-image';
+import Link from 'next/link';
 
 export type ContentBlockDataType = {
   preHeader?: string;
@@ -11,6 +12,8 @@ export type ContentBlockDataType = {
   copy?: string;
   image?: string;
   pageAnchorId?: string;
+  link?: string;
+  linkText?: string;
 };
 export const GenericContentBlock = ({
   block,
@@ -20,7 +23,7 @@ export const GenericContentBlock = ({
   if (!block) {
     return null;
   }
-  const { preHeader, title, copy, image, pageAnchorId } = block;
+  const { preHeader, title, copy, image, pageAnchorId, link, linkText } = block;
   return (
     <div
       id={pageAnchorId ?? title.toLowerCase().replace(' ', '-')}
@@ -39,6 +42,11 @@ export const GenericContentBlock = ({
       )}
       {copy && (
         <div className="mt-8" dangerouslySetInnerHTML={{ __html: copy }} />
+      )}
+      {link && (
+        <Link className="mr-auto btn-main py-1 px-4 border" href={link}>
+          {linkText ?? link}
+        </Link>
       )}
     </div>
   );
