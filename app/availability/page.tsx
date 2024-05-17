@@ -50,7 +50,8 @@ export default async function Availability() {
           );
         }
       })}
-      <div className="mx-auto w-fit">
+
+      <div className="md:flex md:justify-center">
         <CalendarView items={bookingsData} />
       </div>
     </MainContent>

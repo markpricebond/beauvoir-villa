@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { LinkProps } from 'next/link';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname, useRouter } from 'next/navigation';
 import { Logo } from '@app/components/Logo/Logo';
 import { Hamburger } from './Hamburger';
 import classNames from 'classnames';
@@ -23,6 +23,11 @@ export function NavBar() {
     [isMenuShown]
   );
 
+  const router = useRouter();
+  const handleMenuItemClick = (slug: string) => {
+    setIsMenuShown(false);
+    router.push(slug);
+  };
   return (
     <>
       <Hamburger showMenu={isMenuShown} handleToggle={toggleOpen} />
@@ -38,15 +43,15 @@ export function NavBar() {
         <ul className="flex flex-col items-center md:items-start gap-8 max-sm:pt-8">
           {navbarItems.map(({ slug, label }) => (
             <li key={slug} className="relative">
-              <Link
+              <button
                 className={classNames(
                   pathname === slug && 'underline',
                   'btn-main'
                 )}
-                href={slug}
+                onClick={() => handleMenuItemClick(slug)}
               >
                 {label}
-              </Link>
+              </button>
             </li>
           ))}
           <Logo className="block md:hidden w-1/2 h-1/2 mt-8 mix-blend-difference" />

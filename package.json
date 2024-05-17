@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^4.36.0",
+    "@wix/bookings": "^1.0.361",
     "@wix/data": "^1.0.47",
     "@wix/sdk": "^1.5.0",
     "classnames": "^2.5.1",

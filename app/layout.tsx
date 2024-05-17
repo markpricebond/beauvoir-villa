@@ -2,6 +2,7 @@ import './globals.css';
 import Footer from '@app/components/Layout/Footer';
 import Header from '@app/components/Layout/Header';
 import { Aboreto, Roboto } from 'next/font/google';
+import { Suspense } from 'react';
 /**
  * Using force dynamic so changes in business assets (e.g. services) are immediately reflected.
  * If you prefer having it reflected only after redeploy (not recommended) please remove it
@@ -36,7 +37,6 @@ export default function RootLayout({
       </head>
       <body className="bg-black">
         <Header />
-        <div></div>
         <main className="min-h-[600px]">{children}</main>
         <div className="mt-10 sm:mt-20">
           <Footer />

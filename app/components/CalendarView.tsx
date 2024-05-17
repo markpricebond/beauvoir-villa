@@ -1,13 +1,23 @@
 'use client';
 
-import { CMSCollection } from '@app/hooks/useWixClientServer';
 import { formatDate } from '@app/utils/date-formatter';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CalendarView({ items }: { items: CMSCollection }) {
+export default function CalendarView({
+  items,
+  className,
+  title,
+  subtitle,
+}: {
+  items: (Record<string, any> | null | undefined)[];
+  className?: string;
+  title?: string;
+  subtitle?: string;
+}) {
   const [browserLanguage, setBrowserLanguage] = useState<string>();
 
   useEffect(() => {
@@ -16,7 +26,7 @@ export default function CalendarView({ items }: { items: CMSCollection }) {
     }
   }, []);
 
-  const itemsData = items.map((item) => item.data);
+  const itemsData = items.map((item) => item?.data);
 
   const todaysDate = new Date();
   const todaysDateAtMidnight = new Date(todaysDate.setHours(0, 0, 0, 0));
@@ -73,13 +83,18 @@ export default function CalendarView({ items }: { items: CMSCollection }) {
   };
 
   return (
-    <div className="flex flex-col gap-y-8 items-center mt-12">
-      <div className="w-full flex flex-col gap-y-4">
-        <h2>Select a date to enquire</h2>
-        <p className="p2">Check in only available on Saturdays</p>
-        <div className="flex gap-x-2 mt-4">
-          <div className="h-6 w-6 bg-blue-site opacity-60 rounded-sm"></div>
-          <h5>BOOKED</h5>
+    <div
+      className={classNames(
+        className,
+        'flex flex-col gap-y-4 items-center bg-slate-site rounded-lg py-2 md:px-2'
+      )}
+    >
+      <div className="text-center flex flex-col gap-y-1">
+        {title && <h2>Select a date to enquire</h2>}
+        {subtitle && <p className="p2">Check in only available on Saturdays</p>}
+        <div className="flex justify-center gap-x-2 mt-4 items-center">
+          <div className="h-4 w-4 bg-blue-site opacity-60 rounded-sm" />
+          <h6>BOOKED</h6>
         </div>
       </div>
       <Calendar
@@ -90,10 +105,10 @@ export default function CalendarView({ items }: { items: CMSCollection }) {
         tileContent={tileContent}
         tileClassName="relative bg-black disabled:!bg-black !text-white rounded-sm"
         locale={browserLanguage || 'en'}
-        className="text-white !bg-black rounded-lg !border-none !decoration-solid"
+        className="text-white !bg-slate-site rounded-lg !border-none !decoration-solid"
       />
-      <div className="md:flex gap-x-2 mr-auto">
-        <p>Want to book from {`${formatDate(date)}?`}</p>
+      <div className="flex flex-col gap-y-2 items-center text-center">
+        <p className="p2">Want to book from {`${formatDate(date)}?`}</p>
         <Link
           href={`/contact?startDate=${date}#contact-form`}
           className="btn-main"

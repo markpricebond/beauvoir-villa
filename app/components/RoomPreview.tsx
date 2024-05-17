@@ -54,8 +54,8 @@ export const RoomPreview = ({ rooms }: { rooms: RoomCollectionType }) => {
       <h2 className="md:mx-8">Take a look inside</h2>
 
       <div className="relative">
-        <div className="absolute w-8 bg-gradient-to-r from-black -left-[2px] h-full z-50"></div>
-        <div className="absolute w-8 bg-gradient-to-l from-black -right-[2px] h-full z-50"></div>
+        <div className="absolute w-8 bg-gradient-to-r from-black -left-[2px] h-full z-40"></div>
+        <div className="absolute w-8 bg-gradient-to-l from-black -right-[2px] h-full z-40"></div>
         <Carousel
           responsive={responsive}
           itemClass="mx-2 md:mx-4 my-12 md:mx-12"

@@ -5,11 +5,12 @@ import {
   createClient,
 } from '@wix/sdk';
 import { items } from '@wix/data';
+import { bookings } from '@wix/bookings';
 
 type OurWixClient = WixClient<
   undefined,
   IApiKeyStrategy,
-  { items: typeof items }
+  { items: typeof items; bookings: typeof bookings }
 >;
 
 export async function getWixClient(): Promise<OurWixClient> {
@@ -21,7 +22,7 @@ export async function getWixClient(): Promise<OurWixClient> {
   }
 
   const myClient = createClient({
-    modules: { items },
+    modules: { items, bookings },
     auth: ApiKeyStrategy({
       apiKey,
       siteId,

@@ -36,8 +36,8 @@ export const GenericContentBlock = ({
         <Image
           {...convertToNextImageProps(getImageProps(image))}
           style={{ objectFit: 'contain' }}
-          className="rounded-md md:rounded-lg max-sm:max-w-full max-w-[60vw]"
-          sizes="(max-width: 768px) 100vw, 66vw"
+          className="rounded-md md:rounded-lg max-sm:max-w-full max-w-[50vw]"
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
       )}
       {copy && (

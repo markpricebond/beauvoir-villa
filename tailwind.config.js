@@ -13,7 +13,8 @@ module.exports = {
       },
       colors: {
         'purple-site': '#8751BD',
-        'blue-site': '#95c7f4',
+        'blue-site': '#95C7F4',
+        'slate-site': '#1F1F1F',
         'grey-site': '#BBBBBB',
       },
       keyframes: {

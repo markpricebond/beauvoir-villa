@@ -3,13 +3,11 @@ import {
   Testimonials,
 } from '@app/components/Testimonials';
 import { MainContent } from './components/Layout/MainContent';
-import {
-  ContentBlockDataType,
-  GenericContentBlock,
-} from './components/GenericContentBlock';
+import { ContentBlockDataType } from './components/GenericContentBlock';
 import { RoomCollectionType, RoomPreview } from './components/RoomPreview';
 import { notFound } from 'next/navigation';
 import { getWixClient } from './utils/wix-data';
+import { BlocksCollection } from './components/BlocksCollection';
 
 export default async function Home() {
   let imageCounter = -1;
@@ -99,16 +97,10 @@ export default async function Home() {
   return (
     <div className="relative">
       <MainContent pageData={homePageData} pageFacts={homePageFacts}>
-        {homePageBlocks.map((block, index) => {
-          if (block.dataItem) {
-            return (
-              <GenericContentBlock
-                key={index}
-                block={block.dataItem?.data as ContentBlockDataType}
-              />
-            );
-          }
-        })}
+        <BlocksCollection
+          blocks={homePageBlocks as (ContentBlockDataType | null)[]}
+          bookings={bookings}
+        />
       </MainContent>
       <RoomPreview rooms={rooms as RoomCollectionType} />
       {reviews && (

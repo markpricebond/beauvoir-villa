@@ -102,10 +102,10 @@ h5 {
 
 h6 {
   font-family: var(--font-roboto);
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 0.05rem;
   font-weight: 500;
-  line-height: 32px;
+  line-height: 24px;
 }
 
 p {
