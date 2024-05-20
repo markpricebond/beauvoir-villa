@@ -5391,6 +5391,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pigeon-maps@npm:^0.21.5":
+  version: 0.21.5
+  resolution: "pigeon-maps@npm:0.21.5"
+  peerDependencies:
+    react: "*"
+  checksum: 01f1c362ece914dd9d5e2b52fbac80667ed0a9c46f72e0dbf1644b36242f7aca3078258ff6c1a30a6ab86dd4d3eff55863e8469fe76716ea7568757ca58900cd
+  languageName: node
+  linkType: hard
+
 "pirates@npm:^4.0.1":
   version: 4.0.5
   resolution: "pirates@npm:4.0.5"
@@ -7119,6 +7128,7 @@ __metadata:
     flowbite: ^1.5.4
     flowbite-react: ^0.4.4
     next: ^13.4.9
+    pigeon-maps: ^0.21.5
     postcss: ^8.4.19
     prettier: ^2.8.0
     react: ^18.2.0
