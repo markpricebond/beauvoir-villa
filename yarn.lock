@@ -5392,11 +5392,11 @@ __metadata:
   linkType: hard
 
 "pigeon-maps@npm:^0.21.5":
-  version: 0.21.5
-  resolution: "pigeon-maps@npm:0.21.5"
+  version: 0.21.6
+  resolution: "pigeon-maps@npm:0.21.6"
   peerDependencies:
     react: "*"
-  checksum: 01f1c362ece914dd9d5e2b52fbac80667ed0a9c46f72e0dbf1644b36242f7aca3078258ff6c1a30a6ab86dd4d3eff55863e8469fe76716ea7568757ca58900cd
+  checksum: 7fe4854d51028e71a1b07d9b518a530ddae9b035841e4b8be268d588c5bb73541d5f59558474a759d6b156b071c09808af1ccb61216457bd4bf644888aeb0b35
   languageName: node
   linkType: hard
 
